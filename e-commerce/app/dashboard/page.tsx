@@ -5,8 +5,6 @@ export default function DashBoardPage() {
     'use server';
     // Connect to the Neon database
     const sql = neon(`${process.env.DATABASE_URL}`);
-    const result = await sql`SELECT current_database();`;
-    console.log('Connected to database:', result[0].current_database);
 
 
     const comment = formData.get('comment');
