@@ -1,3 +1,26 @@
+import { neon } from '@neondatabase/serverless';
+
 export default function DashBoardPage() {
-    return <p>Dashboard Page</p>;
+  async function create(formData: FormData) {
+    'use server';
+    // Connect to the Neon database
+    const sql = neon(`${process.env.DATABASE_URL}`);
+    const result = await sql`SELECT current_database();`;
+    console.log('Connected to database:', result[0].current_database);
+
+
+    const comment = formData.get('comment');
+    if (typeof comment !== 'string' || comment.trim() === '') {
+    console.error('Invalid comment');
+    return; // Or throw an error
+    }
+await sql`INSERT INTO comments (comment) VALUES (${comment})`;
+  }
+
+  return (
+    <form action={create}>
+      <input type="text" placeholder="write a comment" name="comment" />
+      <button type="submit">Submit</button>
+    </form>
+  );
 }

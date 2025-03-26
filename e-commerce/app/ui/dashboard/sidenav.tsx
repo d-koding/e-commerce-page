@@ -8,8 +8,8 @@ import { cn } from '@/lib/utils'; // Utility for className concatenation (from s
 
 const navItems = [
   { name: 'Dashboard', href: '/dashboard', icon: HomeIcon },
-  { name: 'Settings', href: '/dashboard/settings', icon: CogIcon },
-  { name: 'Profile', href: '/dashboard/profile', icon: UserIcon },
+  { name: 'Customers', href: '/dashboard/customers', icon: CogIcon },
+  { name: 'Product Listing', href: '/dashboard/product-listing', icon: UserIcon },
 ];
 
 export default function SideNav() {
